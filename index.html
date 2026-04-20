@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Aqsa Noreen 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --g1: #1a472a;
+    --g2: #2d6a4f;
+    --g3: #52b788;
+    --g4: #95d5b2;
+    --g5: #d8f3dc;
+    --gold: #f4d03f;
+    --pink: #ff6b9d;
+    --coral: #ff8c69;
+    --cream: #fefae0;
+    --white: #ffffff;
+    --shadow: rgba(0,0,0,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, var(--g1) 0%, var(--g2) 40%, var(--g3) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Floating particles */
+  .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    opacity: 0.15;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Main card */
+  .card {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 32px;
+    padding: 40px 30px;
+    width: min(420px, 94vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+    text-align: center;
+    scrollbar-width: none;
+  }
+  .card::-webkit-scrollbar { display: none; }
+
+  /* Phase transitions */
+  .phase { display: none; animation: fadeSlideIn 0.7s ease; }
+  .phase.active { display: block; }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ===== PHASE 1 ===== */
+  .phase1-emoji {
+    font-size: 70px;
+    display: block;
+    animation: bounce 1.5s ease infinite;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-18px) rotate(5deg); }
+  }
+  .phase1-label {
+    font-family: 'Pacifico', cursive;
+    font-size: 13px;
+    color: var(--g4);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 14px 0 6px;
+  }
+  .phase1-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: var(--white);
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .phase1-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    background: linear-gradient(90deg, var(--gold), var(--pink), var(--coral));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin: 4px 0 20px;
+    animation: shimmer 2s ease infinite;
+    background-size: 200%;
+  }
+  @keyframes shimmer {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .phase1-msg {
+    color: var(--g5);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 16px 36px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn:active::after { opacity: 1; }
+  .btn-green {
+    background: linear-gradient(135deg, var(--g3), var(--g2));
+    color: white;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--coral));
+    color: var(--g1);
+  }
+  .btn-pink {
+    background: linear-gradient(135deg, var(--pink), #c44569);
+    color: white;
+  }
+  .btn:hover { transform: translateY(-3px) scale(1.04); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+
+  /* ===== PHASE 2 (Q1) ===== */
+  .q-header {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--g4);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .q-emoji { font-size: 55px; display: block; margin-bottom: 12px; }
+  .q-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .q-text {
+    color: var(--cream);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .choices { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+  .choice-btn {
+    padding: 14px 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .choice-btn:hover { background: rgba(255,255,255,0.18); border-color: var(--g3); transform: translateX(5px); }
+  .choice-btn.wrong {
+    background: rgba(255, 80, 80, 0.25);
+    border-color: #ff5555;
+    animation: shake 0.4s ease;
+  }
+  .choice-btn.correct {
+    background: rgba(82, 183, 136, 0.35);
+    border-color: var(--g3);
+    animation: pulse-green 0.5s ease;
+  }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+  @keyframes pulse-green {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  .feedback-box {
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    margin: 16px 0;
+    display: none;
+  }
+  .feedback-box.show { display: block; animation: fadeSlideIn 0.4s ease; }
+  .feedback-wrong { background: rgba(255,80,80,0.2); border: 1px solid rgba(255,80,80,0.4); color: #ffb3b3; }
+  .feedback-correct { background: rgba(82,183,136,0.2); border: 1px solid rgba(82,183,136,0.4); color: var(--g5); }
+
+  /* ===== PHASE 3 — 3 Questions ===== */
+  .progress-bar { height: 6px; background: rgba(255,255,255,0.15); border-radius: 10px; margin-bottom: 28px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--g3), var(--gold)); border-radius: 10px; transition: width 0.5s ease; }
+
+  .text-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .text-input::placeholder { color: rgba(255,255,255,0.4); }
+  .text-input:focus { border-color: var(--g3); }
+
+  /* ===== PHASE 4 — Final Wish ===== */
+  .final-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .hearts-rain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .heart-fall {
+    position: absolute;
+    top: -60px;
+    font-size: 24px;
+    animation: fallDown linear infinite;
+    opacity: 0;
+  }
+  @keyframes fallDown {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .final-crown { font-size: 60px; display: block; animation: crownFloat 2s ease-in-out infinite; }
+  @keyframes crownFloat {
+    0%,100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+  .final-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 34px;
+    background: linear-gradient(90deg, var(--gold), var(--pink), var(--g4), var(--gold));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease infinite;
+    line-height: 1.2;
+    margin: 10px 0 6px;
+  }
+  .final-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    color: var(--g4);
+    margin-bottom: 24px;
+  }
+  .wish-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 22px 20px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .wish-card p {
+    color: var(--cream);
+    font-size: 15.5px;
+    line-height: 1.8;
+    font-weight: 600;
+  }
+  .wish-card .wish-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .funny-line {
+    background: rgba(244, 208, 63, 0.12);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    color: var(--cream);
+    font-size: 14.5px;
+    font-weight: 700;
+    margin: 10px 0;
+    font-style: italic;
+    text-align: left;
+  }
+  .prayer-section {
+    background: linear-gradient(135deg, rgba(82,183,136,0.15), rgba(244,208,63,0.1));
+    border: 1px solid rgba(82,183,136,0.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .prayer-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;
+    color: var(--g3);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .prayer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .prayer-item span:first-child { font-size: 20px; flex-shrink: 0; }
+  .prayer-item span:last-child { color: var(--cream); font-size: 14.5px; font-weight: 600; line-height: 1.6; }
+
+  .sign-off {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    color: var(--g4);
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  .firework-line {
+    font-size: 28px;
+    display: block;
+    animation: twinkle 1s ease infinite alternate;
+    margin: 16px 0;
+    letter-spacing: 4px;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.6; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1.05); }
+  }
+
+  /* Confetti burst */
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    z-index: 999;
+    animation: confettiFall linear forwards;
+    border-radius: 2px;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    margin: 20px 0;
+  }
+
+  /* Tooltip tries counter */
+  .tries-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 8px;
+  }
+
+  /* Phase indicator dots */
+  .phase-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s;
+  }
+  .dot.done { background: var(--g3); transform: scale(1.2); }
+  .dot.active { background: var(--gold); transform: scale(1.3); animation: dotPulse 1s ease infinite; }
+  @keyframes dotPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(244,208,63,0.5); }
+    50% { box-shadow: 0 0 0 5px rgba(244,208,63,0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Hearts Rain (shown in phase 4) -->
+<div class="hearts-rain" id="heartsRain"></div>
+
+<div class="card" id="mainCard">
+
+  <!-- PHASE DOTS -->
+  <div class="phase-dots">
+    <div class="dot active" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+    <div class="dot" id="dot4"></div>
+  </div>
+
+  <!-- ===== PHASE 1: Intro ===== -->
+  <div class="phase active" id="phase1">
+    <span class="phase1-emoji">🎂</span>
+    <p class="phase1-label">Wait... who is this for?</p>
+    <h1 class="phase1-title">Ek Khaas Message Hai</h1>
+    <span class="phase1-name">Ek khaas Bandii Kelie!</span>
+    <p class="phase1-msg">
+      Arey ruko ruko! 🙅‍♂️<br>
+      Ye link randomly nahi khola... <br>
+      kisi ne specially banaa ky bheja hai. 👀<br><br>
+      Lekin pehle kuch proof karna hoga —<br>
+      kya tu sach mein <strong>wahi hai</strong> jis ko main ny bheja hai? 😏
+    </p>
+    <button class="btn btn-gold" onclick="goToPhase2()">Haan, main hi hoon! CHalo Aagy →</button>
+    <br><br>
+    <button class="btn btn-green" onclick="fakeWrong()" style="font-size:14px; padding:12px 24px;">
+      Nahin, main koi aur hoon 😇
+    </button>
+    <div class="feedback-box" id="fakeWrongFeedback">
+      😂 Haan haan bilkul! Badi innocent lagti ho!<br>
+      Tumhe hi dekha tha 👀 Click karo!
+    </div>
+  </div>
+
+  <!-- ===== PHASE 2: Q1 - Nickname ===== -->
+  <div class="phase" id="phase2">
+    <p class="q-header">🔐 Level 1 — Security Check</p>
+    <span class="q-emoji">📱</span>
+    <h2 class="q-title">Pehla Sawaal!</h2>
+    <p class="q-text">
+      Meri contact list mein tumara number <br>kis naam se save hai? 😏
+    </p>
+    <div class="choices" id="q1choices">
+      <button class="choice-btn" onclick="checkQ1(this, false)">🦋 Aqsa Noreen</button>
+      <button class="choice-btn" onclick="checkQ1(this, false)">👑 My Queen</button>
+      <button class="choice-btn" onclick="checkQ1(this, true)">🐦 Chirri</button>
+      <button class="choice-btn" onclick="checkQ1(this, false)">😇 Larraku Larkii</button>
+    </div>
+    <div class="feedback-box" id="q1Feedback"></div>
+  </div>
+
+  <!-- ===== PHASE 3: Q2 + Q3 + Q4 (3 more Qs) ===== -->
+  <div class="phase" id="phase3">
+    <p class="q-header">🔐 Level 2 — Sach Bolo!</p>
+    <div class="progress-bar"><div class="progress-fill" id="p3progress" style="width:0%"></div></div>
+    <div id="p3content"></div>
+  </div>
+
+  <!-- ===== PHASE 4: Final Wish ===== -->
+  <div class="phase" id="phase4">
+    <span class="final-crown">👑</span>
+    <h2 class="final-title">Happy Birthday,<br>Aqsa Noreen!</h2>
+    <p class="final-subtitle">Meri sabse pyaari Chirri 🐦💚</p>
+    <span class="firework-line" id="fireworkLine">🎉🎊🥳🎈🎁✨</span>
+
+    <div class="wish-card">
+      <span class="wish-icon">💌</span>
+      <p>
+        Contact list mein kuch log hote hain jo sirf contacts mein nahi,
+        dil mein bhi save hote hain — Or Ap janaab wo ikloti contact list wli mohterma hein . 💚<br><br>
+        Tmary sath me jitna marzii larra hoon, jitna b tang kiya hai, but honestly?
+        Yahi toh zindagi ka sabse khoobsurat hissa hai. Wo fights,
+        wo shararatein, ye jhagry wly wale moments —
+        in sab ke bina life boring lagti naa?. 😤➡️😂
+      </p>
+    </div>
+
+    <div class="funny-line">⚠️ Legal Notice: Apko ko is saal aur bhi zyada teased kiya jayega. Koi remorse nahi. 😈</div>
+
+    <div class="wish-card">
+      <span class="wish-icon">🌟</span>
+      <p>
+        Tu Aqsa hai, tu Chirri hai, tu Asqa hai (haan haan main jaanta hoon 😂) —
+        par sabse pehle tu meri <strong>best female friend</strong> hai.
+        Teri smile, teri nonsense, teri arguments — sab ka apna ek special place hai. 💙
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="prayer-section">
+      <p class="prayer-title">🤲 Mere Dil Se Duaein</p>
+      <div class="prayer-item"><span>🌺</span><span>Allah tujhe dono jahaan mein khush rakhe — is duniya mein bhi, aakhirat mein bhi.</span></div>
+      <div class="prayer-item"><span>💫</span><span>Teri zindagi ke har sapne poore hon, har umeed noor ban ke chamke.</span></div>
+      <div class="prayer-item"><span>🛡️</span><span>Allah tujhe har buri nazar, har takleef aur har mushkil se hamesha mehfooz rakhe.</span></div>
+      <div class="prayer-item"><span>❤️‍🔥</span><span>Teri life mein sirf wahi log rahen jo tujhe sach mein chahte hain — baaki sab OUT!</span></div>
+      <div class="prayer-item"><span>🎓</span><span>Har imtehaan mein — chahe life ka ho ya paper ka — tu pass ho aur first aye!</span></div>
+      <div class="prayer-item"><span>🌙</span><span>Teri har subah khubsurat ho aur teri har raat sukoon wali — deserves kiya hai tu!</span></div>
+      <div class="prayer-item"><span>😂</span><span>Aur Allah tujhe itni himmat de ke meri baatein sun sun ke bhi khush rahey. Ameen. 😇</span></div>
+    </div>
+
+    <div class="wish-card">
+      <span class="wish-icon">🤝</span>
+      <p>
+        Humara yeh jhagra, yeh dosti, yeh bond — ye sirf ek saal ka nahi.
+        <strong>Ye forever wala hai.</strong> Tujhe chahein khushi mile ya mushkil,
+        ek nahi toh teri side pe hoon — bhaad mein jaye baaki sab. 💚<br><br>
+        Aur jab tak hum dost hain tab tak teri life guaranteed
+        entertaining rahegi — aur meri bhi. 😂
+      </p>
+    </div>
+
+    <div class="funny-line">🐦 "Chirri" naam tera, attitude raja ka. Sab se alag, sab se pyaari. Happy Birthday!</div>
+
+    <div class="divider"></div>
+    <span class="firework-line">💚💚💚💚💚💚💚</span>
+
+    <div class="sign-off">
+      Bahut Saara Pyaar ❤️<br>
+      Tumhara Mehboob Dost<br>
+      <small style="font-size:16px; color: var(--g4);">(jo kabhi manta nahi 😂)</small>
+    </div>
+
+    <br>
+    <button class="btn btn-gold" onclick="triggerConfetti()" style="font-size:15px;">
+      🎉 Ek Baar Aur! Confetti Chalaao!
+    </button>
+  </div>
+
+</div>
+
+<script>
+// ===== PARTICLES =====
+function createParticles() {
+  const container = document.getElementById('particles');
+  const colors = ['#52b788','#95d5b2','#d8f3dc','#f4d03f','#ff6b9d','#ffffff'];
+  for (let i = 0; i < 25; i++) {
+    const el = document.createElement('div');
+    el.className = 'particle';
+    const size = Math.random() * 20 + 8;
+    el.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*8}s;
+    `;
+    container.appendChild(el);
+  }
+}
+createParticles();
+
+// ===== DOTS =====
+function updateDots(active) {
+  for (let i = 1; i <= 4; i++) {
+    const d = document.getElementById('dot'+i);
+    d.className = 'dot' + (i < active ? ' done' : (i === active ? ' active' : ''));
+  }
+}
+
+// ===== PHASE NAV =====
+function goToPhase(n) {
+  document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
+  document.getElementById('phase'+n).classList.add('active');
+  document.getElementById('mainCard').scrollTop = 0;
+  updateDots(n);
+}
+
+function goToPhase2() { goToPhase(2); }
+
+// ===== PHASE 1 fake wrong =====
+function fakeWrong() {
+  const f = document.getElementById('fakeWrongFeedback');
+  f.className = 'feedback-box feedback-correct show';
+}
+
+// ===== Q1 =====
+let q1done = false;
+function checkQ1(btn, correct) {
+  if (q1done) return;
+  const fb = document.getElementById('q1Feedback');
+  if (!correct) {
+    btn.classList.add('wrong');
+    fb.className = 'feedback-box feedback-wrong show';
+    fb.innerHTML = '❌ Yeh toh bilkul galat hai! Dimagh kahaan hai tera? 😂<br>Dobara try karo!';
+    setTimeout(() => { btn.classList.remove('wrong'); }, 600);
+    return;
+  }
+  q1done = true;
+  btn.classList.add('correct');
+  fb.className = 'feedback-box feedback-correct show';
+  fb.innerHTML = '✅ Wahhhh! "Chirri" — bilkul sahi! 🐦🎉<br>Teri pehchan pakki hai! Aage chalte hain...';
+  document.querySelectorAll('#q1choices .choice-btn').forEach(b => b.style.pointerEvents = 'none');
+  setTimeout(() => { startPhase3(); }, 1800);
+}
+
+// ===== PHASE 3 — 3 questions =====
+const p3Qs = [
+  {
+    type: 'mcq',
+    emoji: '⚡',
+    q: 'Yaar sach batao — humari dosti mein zyada kaun ladhta hai?',
+    opts: [
+      { label: '😇 Main bilkul nahi ladti', correct: false, react: '😂😂😂 SERIOUSLY?! Aage badhne se pehle mirror dekho!!' },
+      { label: '👻 Dono barabar', correct: false, react: '🤥 Yeh bhi galat! Dobara socho!' },
+      { label: '🔥 Chirri — yani main! (Sach hai! 😤)', correct: true, react: '✅ Bahut bahut SHUKRIYA sach bolne ke liye! 😂🏆 At least teri honesty toh achi hai Chirri!' },
+      { label: '🙄 Woh dusra banda', correct: false, react: '❌ Absolutely not. Mirrors lagao ghar mein! 😂' },
+    ]
+  },
+  {
+    type: 'mcq',
+    emoji: '🤔',
+    q: 'Humari dosti ki sabse accurate description kya hai?',
+    opts: [
+      { label: '😇 Hum kabhi nahi ladte', correct: false, react: '🙈 Jhootha alert! JhooTHAAA! Next!' },
+      { label: '🤝 Normal friends hain', correct: false, react: '❌ Hum NORMAL bilkul nahi hain. Next try!' },
+      { label: '💪 Ladte hain, phir bhi saath hain!', correct: true, react: '✅ Yesss! Yahi toh sach hai! Larna aur phir bhi SOLID rehna — yahi toh asli dosti hai! 🥹💚' },
+      { label: '🐦 Chirri aur uska fan club', correct: false, react: '🙅‍♂️ Main fan nahi hoon... okay thoda hoon 😤 but yeh answer nahi!' },
+    ]
+  },
+  {
+    type: 'text',
+    emoji: '💚',
+    q: 'Last question! Type karo: tum mujhe kya kehti ho jab main teasing karta hoon? 😈',
+    hint: '(e.g. "bura insaan", "pagal", "yaar yaar"...)',
+    placeholder: 'Apna jawab yahan likho...',
+  }
+];
+
+let p3idx = 0;
+let p3done = [false, false, false];
+
+function startPhase3() {
+  p3idx = 0;
+  goToPhase(3);
+  renderP3Q();
+}
+
+function renderP3Q() {
+  const q = p3Qs[p3idx];
+  const fill = (p3idx / 3) * 100;
+  document.getElementById('p3progress').style.width = fill + '%';
+  const cont = document.getElementById('p3content');
+
+  if (q.type === 'mcq') {
+    cont.innerHTML = `
+      <span class="q-emoji">${q.emoji}</span>
+      <h2 class="q-title">Sawaal ${p3idx+1} / 3</h2>
+      <p class="q-text">${q.q}</p>
+      <div class="choices" id="p3choices">
+        ${q.opts.map((o,i) => `<button class="choice-btn" onclick="checkP3MCQ(${i})">${o.label}</button>`).join('')}
+      </div>
+      <div class="feedback-box" id="p3fb"></div>
+    `;
+  } else {
+    cont.innerHTML = `
+      <span class="q-emoji">${q.emoji}</span>
+      <h2 class="q-title">Aakhri Sawaal! 🎯</h2>
+      <p class="q-text">${q.q}</p>
+      <p style="color:var(--g4); font-size:13px; margin-bottom:14px;">${q.hint}</p>
+      <input class="text-input" id="p3textinput" placeholder="${q.placeholder}" maxlength="100">
+      <button class="btn btn-green" onclick="checkP3Text()" style="width:100%">Submit! 📩</button>
+      <div class="feedback-box" id="p3fb"></div>
+    `;
+  }
+}
+
+function checkP3MCQ(idx) {
+  if (p3done[p3idx]) return;
+  const q = p3Qs[p3idx];
+  const opt = q.opts[idx];
+  const btns = document.querySelectorAll('#p3choices .choice-btn');
+  const fb = document.getElementById('p3fb');
+
+  if (!opt.correct) {
+    btns[idx].classList.add('wrong');
+    fb.className = 'feedback-box feedback-wrong show';
+    fb.innerHTML = `❌ ${opt.react}`;
+    setTimeout(() => btns[idx].classList.remove('wrong'), 600);
+    return;
+  }
+  p3done[p3idx] = true;
+  btns[idx].classList.add('correct');
+  fb.className = 'feedback-box feedback-correct show';
+  fb.innerHTML = `${opt.react}`;
+  btns.forEach(b => b.style.pointerEvents = 'none');
+  setTimeout(() => nextP3(), 2000);
+}
+
+function checkP3Text() {
+  const val = document.getElementById('p3textinput').value.trim();
+  const fb = document.getElementById('p3fb');
+  if (!val) {
+    fb.className = 'feedback-box feedback-wrong show';
+    fb.innerHTML = '😒 Kuch toh likho! Blank nahi chalega!';
+    return;
+  }
+  p3done[p3idx] = true;
+  fb.className = 'feedback-box feedback-correct show';
+  fb.innerHTML = `✅ Hahaha! "${val}" — classic Chirri reaction! 😂💚<br>Theek hai main maan leta hoon!`;
+  document.getElementById('p3textinput').disabled = true;
+  setTimeout(() => nextP3(), 2000);
+}
+
+function nextP3() {
+  p3idx++;
+  if (p3idx >= p3Qs.length) {
+    document.getElementById('p3progress').style.width = '100%';
+    setTimeout(() => goToFinal(), 500);
+  } else {
+    renderP3Q();
+  }
+}
+
+// ===== PHASE 4 =====
+function goToFinal() {
+  goToPhase(4);
+  setTimeout(() => {
+    triggerConfetti();
+    startHeartsRain();
+  }, 300);
+}
+
+function startHeartsRain() {
+  const container = document.getElementById('heartsRain');
+  const hearts = ['💚','💚','💚','💛','🌿','✨','💚','💚','🎊','💚'];
+  let count = 0;
+  const interval = setInterval(() => {
+    if (count > 80) { clearInterval(interval); return; }
+    const el = document.createElement('div');
+    el.className = 'heart-fall';
+    el.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.fontSize = (Math.random()*20+16) + 'px';
+    el.style.animationDuration = (Math.random()*4+4) + 's';
+    el.style.animationDelay = (Math.random()*2) + 's';
+    container.appendChild(el);
+    count++;
+    setTimeout(() => el.remove(), 8000);
+  }, 200);
+}
+
+function triggerConfetti() {
+  const colors = ['#52b788','#f4d03f','#ff6b9d','#d8f3dc','#ff8c69','#ffffff','#95d5b2'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `
+      left:${Math.random()*100}vw;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      width:${Math.random()*10+6}px;
+      height:${Math.random()*10+6}px;
+      border-radius:${Math.random()>0.5?'50%':'2px'};
+      animation-duration:${Math.random()*2+2}s;
+      animation-delay:${Math.random()*0.5}s;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+  }
+}
+</script>
+</body>
+</html>
